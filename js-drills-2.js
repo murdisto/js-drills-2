@@ -51,3 +51,39 @@ function decodeString(string) {
 
 let codeBreaker = decodeString('craft block argon meter bells brown croon droop');
 console.log(codeBreaker);
+
+const daysOfMonth = (month, leapYear) => {
+  let daysCount;
+  switch(month) {
+    case 'January':
+    case 'March':
+    case 'May':
+    case 'July':
+    case 'August':
+    case 'October':
+    case 'December':
+      daysCount = 31;
+      break;
+
+    case 'April':
+    case 'June':
+    case 'September':
+    case 'November':
+      daysCount = 30;
+      break;
+
+    case 'February':
+      if (leapYear) {
+        daysCount = 29;
+      }else{
+        daysCount = 28;
+      }
+      break;
+
+    default:
+      throw new Error('Must provide a valid month.');
+      break;
+  }
+  return `${month} has ${daysCount} days.`;
+}
+console.log(daysOfMonth("February", true))
