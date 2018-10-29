@@ -40,12 +40,12 @@ function decode(word) {
     return word[4];
   }
   else {
-      return ' ';
+    return ' ';
   }
 }
 
 function decodeString(string) {
-    return string.split(' ').map(word => decode(word)).join('');
+  return string.split(' ').map(word => decode(word)).join('');
 
 }
 
@@ -55,35 +55,63 @@ console.log(codeBreaker);
 const daysOfMonth = (month, leapYear) => {
   let daysCount;
   switch(month) {
-    case 'January':
-    case 'March':
-    case 'May':
-    case 'July':
-    case 'August':
-    case 'October':
-    case 'December':
-      daysCount = 31;
-      break;
+  case 'January':
+  case 'March':
+  case 'May':
+  case 'July':
+  case 'August':
+  case 'October':
+  case 'December':
+    daysCount = 31;
+    break;
 
-    case 'April':
-    case 'June':
-    case 'September':
-    case 'November':
-      daysCount = 30;
-      break;
+  case 'April':
+  case 'June':
+  case 'September':
+  case 'November':
+    daysCount = 30;
+    break;
 
-    case 'February':
-      if (leapYear) {
-        daysCount = 29;
-      }else{
-        daysCount = 28;
-      }
-      break;
+  case 'February':
+    if (leapYear) {
+      daysCount = 29;
+    }else{
+      daysCount = 28;
+    }
+    break;
 
-    default:
-      throw new Error('Must provide a valid month.');
-      break;
+  default:
+    throw new Error('Must provide a valid month.');
+    break;
   }
   return `${month} has ${daysCount} days.`;
+};
+console.log(daysOfMonth('February', true));
+
+function game(num) {
+  const randomNo = Math.floor(Math.random() * 3) + 1;
+  if (randomNo === num) {
+    console.log('Tie!');
+  }
+  else if (randomNo === 3 && num === 1) {
+    console.log('Rock beats scissors! You win.');
+  }
+  else if (randomNo === 3 && num === 2) {
+    console.log('Scissors beats paper! You lose.');
+  }
+  else if (randomNo === 2 && num === 1) {
+    console.log('Paper beats rock! You lose.');
+  }
+  else if (randomNo === 2 && num === 3) {
+    console.log('Scissors beats paper! You win.');
+  }
+  else if (randomNo === 1 && num === 2) {
+    console.log('Paper beats rock! You win.');
+  }
+  else if (randomNo === 1 && num === 3) {
+    console.log('Rocks beat scissors. You lose.');
+  }
+  else {
+    console.error('Error, must input 1 2 or 3.');  
+  }
 }
-console.log(daysOfMonth("February", true))
